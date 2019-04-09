@@ -1,0 +1,171 @@
+body {
+    font-family: "Lato", sans-serif;
+    transition: background-color .5s;
+    /*background-image: url("../img/bg.gif");
+    background-color: #cccccc;*/
+}
+
+
+/* Sidebar */
+.sidenav {
+    height: 100%;
+    width: 0%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #6202EE;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 18px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 22px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #FFFFFF;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 5px;
+    font-size: 36px;
+
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+
+    .sidenav a {
+        font-size: 18px;
+    }
+}
+
+/* Side bar search*/
+
+#side-bar-search {
+    margin-left: 21px;
+    min-height: 50px;
+    border: solid 2px #6202EE;
+    font-family: Montserrat;
+    font-size: 18px;
+}
+
+#side-bar-search-input {
+    padding: 3px;
+    width: 80%;
+}
+
+/* Main */
+#main {
+    transition: margin-left .5s;
+    background-color: #FFFFFF;
+}
+
+/* nav-bar */
+.container-nav-bar {
+    padding-left: 10px;
+    padding-top: 10px;
+    background-color: #6202EE;
+    color: #FFFFFF;
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Container principal */
+.container-body {
+    background-color: #66dd66;
+    min-height: 460px;
+    height: 100%;
+    margin: 5px;
+
+}
+
+
+/* Login */
+.container-login-form {
+    margin: auto;
+    padding: 50px;
+}
+
+.form-signin {
+    margin: auto;
+    max-width: 400px;
+}
+
+#login-input-username, #login-input-password {
+    min-height: 50px;
+    min-width: 200px;
+    border: solid 2px #6202EE;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    margin-bottom: 10px;
+    font-family: Montserrat;
+    font-size: 18px;
+    color: #6202EE;
+}
+
+
+#login-input-btn {
+    background-color: #6202EE;
+    margin: auto;
+    width: 64%;
+}
+
+a {
+    color: inherit; /* blue colors for links too */
+    text-decoration: inherit; /* no underline */
+}
+
+#login-input-forgot {
+    float: right;
+    display: block;
+    color: inherit; /* blue colors for links too */
+    text-decoration: inherit; /* no underline */
+}
+
+/* Smaller than standard 960 (devices and browsers) */
+@media only screen and (max-width: 959px) {
+    p {
+        font-size: 10px;
+    }
+}
+
+/* Tablet Portrait size to standard 960 (devices and browsers) */
+@media only screen and (min-width: 768px) and (max-width: 959px) {
+    p {
+        font-size: 102px;
+    }
+}
+
+
+
+
+/* All Mobile Sizes (devices and browser) */
+@media only screen and (max-width: 767px) {
+    p {
+        font-size: 114px;
+    }
+}
+
+/* Mobile Landscape Size to Tablet Portrait (devices and browsers) */
+@media only screen and (min-width: 480px) and (max-width: 767px) {
+    p {
+        font-size: 99px;
+    }
+}
+
+/* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
+@media only screen and (max-width: 479px) {
+    p {
+        font-size: 20px;
+    }
+}

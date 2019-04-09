@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"> &times;</a>
+        <form id="side-bar-search">
+            <input placeholder="Pesquisar" id="side-bar-search-input">
+        </form>
+
+        <a href="#">Componentes</a>
+        <a href="#">Ambientes</a>
+        <a href="#">Cenários</a>
+    </div>
+    <div id="main">
+        <div class="container-nav-bar">
+            <div class="nav nav-bar">
+                <span style="font-size:30px;cursor:pointer; white-space: nowrap;"
+                      onclick="openNav()"> &#9776; OurHome </span>
+            </div>
+        </div>
+        <div class="container-body" style="word-wrap: break-word;">
+            <div style="white-space: nowrap;">
+                <p>Este é meu textoEste </p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
