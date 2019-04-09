@@ -1,6 +1,8 @@
 {% extends 'base.html.twig' %}
 
 
+{% if is_granted('ROLE_USER') %}
+
 {% block body %}
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"> &times;</a>
@@ -26,3 +28,6 @@
         </div>
     </div>
 {% endblock %}
+
+{% else %}
+{% endif %}

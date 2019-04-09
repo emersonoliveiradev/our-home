@@ -12,7 +12,11 @@
     {% endblock %}
 
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
-
+    {% if is_granted('ROLE_USER') %}
+        <a href="{{ path('fos_user_security_logout') }}">Sair</a>
+    {% else %}
+        <a href="{{ path('fos_user_security_login') }}">Login</a>
+    {% endif %}
 </head>
 <body>
 
