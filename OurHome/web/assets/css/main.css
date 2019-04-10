@@ -99,12 +99,13 @@ body {
 
 .form-signin {
     margin: auto;
-    max-width: 400px;
+    max-width: 300px;
 }
 
 #login-input-username, #login-input-password {
     min-height: 50px;
-    min-width: 200px;
+    min-width: 100%;
+    padding: 10px;
     border: solid 2px #6202EE;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     margin-bottom: 10px;
@@ -113,12 +114,33 @@ body {
     color: #6202EE;
 }
 
+#login-input-username-label, #login-input-password-label {
+    display: block
+}
 
 #login-input-btn {
     background-color: #6202EE;
     margin: auto;
-    width: 64%;
+    margin-top: 5px;
+    width: 50%;
 }
+
+@media only screen and (max-width: 479px) {
+
+}
+
+
+#remember_me {
+    padding: 0;
+    margin: 0;
+    position: relative;
+    top: 3px;
+}
+
+#login-span-btn {
+    width: 100%;
+}
+
 
 a {
     color: inherit; /* blue colors for links too */
@@ -145,8 +167,6 @@ a {
         font-size: 102px;
     }
 }
-
-
 
 
 /* All Mobile Sizes (devices and browser) */
