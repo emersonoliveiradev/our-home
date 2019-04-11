@@ -2,38 +2,11 @@
 
 
 {% if is_granted('ROLE_USER') %}
-
     {% block fos_user_content %}
-        <div id="mySidenav" class="sidenav">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()"> &times;</a>
-            <form id="side-bar-search">
-                <input placeholder="Pesquisar" id="side-bar-search-input">
-            </form>
-
-            <a href="#">Componentes</a>
-            <a href="#">Ambientes</a>
-            <a href="#">Cenários</a>
-        </div>
         <div id="main">
-            <div class="container-nav-bar">
-                <div class="nav nav-bar">
-                <span style="font-size:30px;cursor:pointer; white-space: nowrap;"
-                      onclick="openNav()"> &#9776; OurHome
-                </span>
-                    <span style="float: right; margin-right: 15px; font-size: 30px">
-                    <i class="fas fa-ellipsis-v"></i>
-                        {% if is_granted('ROLE_USER') %}
-                            <a href="{{ path('fos_user_security_logout') }}">Sair</a>
-                        {% else %}
-
-                        {% endif %}
-                </span>
-
-                </div>
-            </div>
             <div class="container-body" style="word-wrap: break-word; white-space: nowrap;">
                 <div class="row">
-                    <div class="col-md-12">
+                    <div class="col-xs-12 col-md-6">
                         <div class="col-xs-3"
                              style="background-color: #5eb5e0; height: 85px; width: 24%; margin-right: 1.33%">
                             <div class="row" style="height: 100%; color: #FFFFFF; text-align: center">
@@ -75,7 +48,7 @@
                             <div class="row" style="height: 100%; color: #FFFFFF; text-align: center">
                                 <div style="display: block; min-height: 79%;background-color: #FB8787;vertical-align: middle;">
                                     <div style="position: relative; transform: translateY(60%); ">
-                                        <span style="font-size: 24px">26C</span>
+                                        <span style="font-size: 24px">40%</span>
                                     </div>
                                 </div>
                                 <div style="display: block; height: 21%; background-color: #7C4040">
@@ -86,22 +59,31 @@
                     </div>
                 </div>
                 <div class="row" style="margin-top: 5px">
-                    <div class="col-md-12">
-                        <div class="col-md-12" style="background-color: #5eb5e0; min-height: 140px; min-width: 100%; margin-right: 1%">
-                            asd
+                    <div class="col-xs-12 col-md-6">
+                        <div class="col-md-12"
+                             style='background-size: cover; background-color: #5eb5e0; min-height: 140px; min-width: 100%; margin-right: 1%; background-image: url("{{ asset('assets/img/house.png') }}"'>
+                            <!--Imagem aqui -->
                         </div>
                     </div>
                 </div>
-                <div class="row" style="margin-top: 5px; width: 100%">
-                    <div class="col-xs-12" style="">
-                        <div class="col-xs-8" style="background-color: #5eb5e0; min-height: 140px; min-width: 60%; margin-right: 1px">
-                            asd
+                <div class="row" style="margin-top: 5px;">
+                    <div class="col-xs-12 col-md-6">
+                        <div class="col-xs-8"
+                             style="background-color: #5eb5e0; min-height: 140px; width: 65.3%; margin-right: 1.33%">
+                            Entrada1
                         </div>
-                        <div class="col-xs-4" style="background-color: #FF0000; min-height: 65px;  min-width: 15%;">
-                            asd
+                        <div class="col-xs-4" style="background-color: #FF0000; min-height: 68px;">
+                            Entrada2
                         </div>
-                        <div class="col-xs-4" style="background-color: #FF0000; min-height: 65px;">
-                            asd
+                        <div class="col-xs-4" style="background-color: #FF0000; min-height: 68px; margin-top: 4px">
+                            Entrada3
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top: 5px;">
+                    <div class="col-xs-12 col-md-6">
+                        <div class="col-xs-12" style="background-color: #5eb5e0; min-height: 140px;">
+                            Entrada 4
                         </div>
                     </div>
                 </div>
@@ -126,6 +108,21 @@
       document.getElementById("main").style.marginLeft = "250px";
       document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

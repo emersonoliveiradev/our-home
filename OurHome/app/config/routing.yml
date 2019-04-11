@@ -9,3 +9,8 @@ default:
     resource: "@BaseBundle/Controller/"
     type:      annotation
     prefix:   /
+
+component:
+    resource: "@BaseBundle/Controller/"
+    type:      annotation
+    prefix:   /

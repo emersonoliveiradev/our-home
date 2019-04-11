@@ -2,18 +2,24 @@
 
 namespace BaseBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 
-class DefaultController extends Controller {
+class ComponentController extends Controller {
     
     /**
-     * @Route("/index")
+     * @Route("/componentes", name="component_index")
      * @Method("GET")
+     *
      */
-    public function indexAction() {
-        return $this->render('default/index.html.twig');
+    public function indexAction(){
+        return $this->render('component/index.html.twig');
     }
+    
 }
+
+
+
+

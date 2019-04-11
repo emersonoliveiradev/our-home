@@ -1,0 +1,26 @@
+{% block navbar %}
+    <div class="container-nav-bar">
+        <div class="nav nav-bar">
+            <span style="font-size:30px;cursor:pointer; white-space: nowrap;"
+                  onclick="openNav()"> &#9776;
+                OurHome
+            </span>
+            <div class="dropdown" style="float: right; margin-right: 15px; font-size: 30px">
+                <i class="fas fa-ellipsis-v dropdown dropdown-toggle" data-toggle="dropdown"></i>
+                <ul class="dropdown-menu" style="right:0; left:auto;">
+                    {% if is_granted('ROLE_USER') %}
+                        <li class="dropdown-submenu pull-left"><a href="{{ path('fos_user_security_logout') }}">Sair</a></li>
+                        <li class="dropdown-submenu pull-left"><a href="#">Opções aqui</a></li>
+                        <li class="dropdown-submenu pull-left"><a href="#">Opções aqui</a></li>
+                        <li class="dropdown-submenu pull-left"><a href="#">Opções aqui</a></li>
+                        <li class="dropdown-submenu pull-left"><a href="#">Opções aqui</a></li>
+                        <li class="dropdown-submenu pull-left"><a href="#">Opções aqui</a></li>
+                    {% else %}
+                        <li class="dropdown-submenu pull-left"><a href="#">Você não está logado</a></li>
+                        <!--Redirect to login-->
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}
