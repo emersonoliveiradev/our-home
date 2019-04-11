@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block fos_user_content %}
+
+    {% trans_default_domain 'FOSUserBundle' %}
+    <div class="container-login-form">
+    <div style="text-align: center; font-size: 50px">Logo</div>
+    {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register, form-signin'}}) }}
+    {{ form_row(form.username, {'attr': {'class': 'register-input','placeholder': 'Insira seu acesso'|trans, 'label':'Nome de acesso'}}) }}
+    {{ form_row(form.email, {'attr': {'class': 'register-input','placeholder': 'Insira seu e-mail'|trans}}) }}
+    {{ form_row(form.plainPassword.first, { 'attr': {'class':'register-input','placeholder': 'Insira sua senha'|trans}}) }}
+    {{ form_row(form.plainPassword.second, { 'attr': {'class':'register-input', 'placeholder': 'Insira novamente a senha'|trans}}) }}
+    {{ form_errors(form) }}
+    <input type="submit" class="btn btn-lg btn-primary register-input-button" name="_submit" value="{{ 'ACESSAR'|trans }}"/>
+    {{ form_end(form) }}
+
+</div>
+{% endblock %}
+
+

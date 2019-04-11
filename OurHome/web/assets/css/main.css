@@ -102,7 +102,7 @@ body {
     max-width: 300px;
 }
 
-#login-input-username, #login-input-password {
+.login-input-username, .login-input-password, .register-input  {
     min-height: 50px;
     min-width: 100%;
     padding: 10px;
@@ -118,8 +118,9 @@ body {
     display: block
 }
 
-#login-input-btn {
+.login-input-button, .register-input-button{
     background-color: #6202EE;
+    display: block;
     margin: auto;
     margin-top: 5px;
     width: 50%;

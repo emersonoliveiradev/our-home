@@ -76,3 +76,6 @@ fos_user:
     from_email:
         address: "hello@aquanote.com"
         sender_name: "Aquanote Postman"
+    registration:
+        form:
+            type: BaseBundle\Form\RegistrationFormType

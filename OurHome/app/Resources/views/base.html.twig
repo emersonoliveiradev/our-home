@@ -5,32 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}Boas vindas!{% endblock %}</title>
     {% block stylesheets %}
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-              integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-              crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
         <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
+        <!-- FontAwesome -->
+        <link href="{{ asset('assets/font/fontawesome-free/css/fontawesome.css') }}" rel="stylesheet">
+        <link href="{{ asset('assets/font/fontawesome-free/css/brands.css') }}" rel="stylesheet">
+        <link href="{{ asset('assets/font/fontawesome-free/css/solid.css') }}" rel="stylesheet">
     {% endblock %}
 
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
-
-    {% if is_granted('ROLE_USER') %}
-        <a href="{{ path('fos_user_security_logout') }}">Sair</a>
-    {% else %}
-        <a href="{{ path('fos_user_security_login') }}">Login</a>
-    {% endif %}
 </head>
 <body>
-<!--Verificar se está logado ou não-->
-{% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-    {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
-    <a href="{{ path('fos_user_security_logout') }}">
-        {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-    </a>
-{% else %}
-    <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
-{% endif %}
-
-
 {% if app.request.hasPreviousSession %}
     {% for type, messages in app.session.flashbag.all() %}
         {% for message in messages %}
@@ -77,5 +62,3 @@
 </body>
 
 </html>
-
-
