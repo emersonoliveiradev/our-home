@@ -13,7 +13,21 @@
         <link href="{{ asset('assets/font/fontawesome-free/css/fontawesome.css') }}" rel="stylesheet">
         <link href="{{ asset('assets/font/fontawesome-free/css/brands.css') }}" rel="stylesheet">
         <link href="{{ asset('assets/font/fontawesome-free/css/solid.css') }}" rel="stylesheet">
+
+        <!--Switch toogle-->
     {% endblock %}
+
+    <script>
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+      document.getElementById("main").style.marginLeft= "0";
+    }
+
+    function openNav() {
+      document.getElementById("mySidenav").style.width = "250px";
+      document.getElementById("main").style.marginLeft = "250px";
+    }
+    </script>
 
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
 
@@ -22,7 +36,6 @@
 
 </head>
 <body>
-
 {% if app.request.hasPreviousSession %}
     {% for type, messages in app.session.flashbag.all() %}
         {% for message in messages %}
@@ -41,6 +54,7 @@
     <div>
         <div class="row">
             <div class="col-xs-12">
+                <div id="main">
 
                 {% block sidebar %}
                     {{ include('default/sidebar.html.twig') }}
@@ -53,27 +67,13 @@
                 {% block fos_user_content %}
 
                 {% endblock %}
-
+                </div>
             </div>
         </div>
     </div>
 {% endblock %}
 
 {% block javascripts %}
-    <script>
-    function closeNav() {
-      document.getElementById("mySidenav").style.width = "0";
-      document.getElementById("main").style.marginLeft= "0";
-      document.body.style.backgroundColor = "white";
-    }
-
-    function openNav() {
-      document.getElementById("mySidenav").style.width = "250px";
-      document.getElementById("main").style.marginLeft = "250px";
-      document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
-    }
-
-    </script>
 {% endblock %}
 
 </body>

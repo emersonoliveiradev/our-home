@@ -1,37 +1,107 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Boas vindas!{% endblock %}</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+              integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+              crossorigin="anonymous">
+        <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
+        <!-- FontAwesome -->
+        <link href="{{ asset('assets/font/fontawesome-free/css/fontawesome.css') }}" rel="stylesheet">
+        <link href="{{ asset('assets/font/fontawesome-free/css/brands.css') }}" rel="stylesheet">
+        <link href="{{ asset('assets/font/fontawesome-free/css/solid.css') }}" rel="stylesheet">
+    {% endblock %}
 
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
 
-{% block fos_user_content %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
-    {% trans_default_domain 'FOSUserBundle' %}
+</head>
+<body>
 
-    {% if error %}
-        <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
-    <div class="container-login-form">
-
-        <form class="form-signin" action="{{ path("fos_user_security_check") }}" method="post">
-            {% if csrf_token %}
-                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
-            {% endif %}
-
-            <div style="text-align: center; font-size: 50px">Logo</div>
-
-            <label for="username" id="login-input-username-label">{{ 'Usuário'|trans }}</label>
-            <input type="text" class="login-input-username" name="_username" value="{{ last_username }}"
-                   placeholder="Acesso do usuário" required="required"/>
-
-            <label for="login-input-password" id="login-input-password-label">{{ 'Senha'|trans }}</label>
-            <input type="password" class="login-input-password" name="_password" placeholder="Senha" required="required"/>
-
-            <span id="login-span-check-remember-me">
-                <input type="checkbox" id="remember_me" name="_remember_me" value="on"/>
-                <label for="remember_me">{{ 'Lembrar-se'|trans }}</label>
-                <span id="login-input-forgot" ><a href="#">Esqueceu sua senha?</a></span>
-            </span>
-            <div id="login-span-btn">
-                <input type="submit" class="btn btn-lg btn-primary login-input-button" name="_submit" value="{{ 'ACESSAR'|trans }}"/>
+{% if app.request.hasPreviousSession %}
+    {% for type, messages in app.session.flashbag.all() %}
+        {% for message in messages %}
+            <div class="flash-{{ type }}">
+                {{ message }}
             </div>
-        </form>
+        {% endfor %}
+    {% endfor %}
+{% endif %}
+{% block body %}
+    {% for flash_message in app.session.flashbag.get('error') %}
+        <div class="alert alert-danger">
+            {{ flash_message }}
+        </div>
+    {% endfor %}
+    <div>
+        <div class="row">
+            <div class="col-xs-12">
+                {% block fos_user_content %}
+                        {% trans_default_domain 'FOSUserBundle' %}
+
+                        {% if error %}
+                            <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                        {% endif %}
+                        <div class="container-login-form">
+
+                            <form class="form-signin" action="{{ path("fos_user_security_check") }}" method="post">
+                                {% if csrf_token %}
+                                    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
+                                {% endif %}
+
+                                <div style="text-align: center; font-size: 50px">Logo</div>
+
+                                <label for="username" id="login-input-username-label">{{ 'Usuário'|trans }}</label>
+                                <input type="text" class="login-input-username" name="_username"
+                                       value="{{ last_username }}"
+                                       placeholder="Acesso do usuário" required="required"/>
+
+                                <label for="login-input-password"
+                                       id="login-input-password-label">{{ 'Senha'|trans }}</label>
+                                <input type="password" class="login-input-password" name="_password" placeholder="Senha"
+                                       required="required"/>
+
+                                <span id="login-span-check-remember-me">
+                                    <input type="checkbox" id="remember_me" name="_remember_me" value="on"/>
+                                    <label for="remember_me">{{ 'Lembrar-se'|trans }}</label>
+                                    <span id="login-input-forgot"><a href="#">Esqueceu sua senha?</a></span>
+                                </span>
+                                <div id="login-span-btn">
+                                    <input type="submit" class="btn btn-lg btn-primary login-input-button" name="_submit" value="{{ 'ACESSAR'|trans }}"/>
+                                </div>
+                            </form>
+                        </div>
+                    {% endblock %}
+            </div>
+        </div>
     </div>
 {% endblock %}
+
+{% block javascripts %}
+    <script>
+    function closeNav() {
+      document.getElementById("mySidenav").style.width = "0";
+      document.getElementById("main").style.marginLeft= "0";
+      document.body.style.backgroundColor = "white";
+    }
+
+    function openNav() {
+      document.getElementById("mySidenav").style.width = "250px";
+      document.getElementById("main").style.marginLeft = "250px";
+      document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+    }
+
+
+
+
+    </script>
+{% endblock %}
+
+</body>
+
+</html>

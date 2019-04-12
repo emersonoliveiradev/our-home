@@ -1,3 +1,7 @@
+base_component:
+    resource: "@BaseBundle/Controller/ComponentController.php"
+    type:     annotation
+
 fos_user:
     resource: "@FOSUserBundle/Resources/config/routing/all.xml"
 
