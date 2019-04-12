@@ -1,16 +1,22 @@
 {% extends 'base.html.twig' %}
 
+
 {% block body %}
-    <h1>Component creation</h1>
+    <h1>Criar Componente</h1>
+    <div class="container-login-form">
+        {{ form_start(form, {'method': 'post', 'attr': {'class': 'fos_user_registration_register, form-signin'}}) }}
+        {{ form_row(form.title, {'attr': {'class': 'register-input','placeholder': 'Insira seu acesso'|trans, 'label':'Nome de acesso'}}) }}
+        {{ form_row(form.description, {'attr': {'class': 'register-input','placeholder': 'Insira seu e-mail'|trans}}) }}
+        {{ form_row(form.status) }}
+        {{ form_errors(form) }}
+        <input type="submit" class="btn btn-lg btn-primary register-input-button" name="_submit"
+               value="{{ 'Criar'|trans }}"/>
+        <a href="{{ path('component_index') }}">
+            <button class="btn btn-lg btn-primary register-input-button" name="_submit" value="{{ 'Voltar'|trans }}">
+                Voltar
+            </button>
+        </a>
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-        <input type="submit" value="Create" />
-    {{ form_end(form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('component_index') }}">Back to the list</a>
-        </li>
-    </ul>
+        {{ form_end(form) }}
+    </div>
 {% endblock %}
