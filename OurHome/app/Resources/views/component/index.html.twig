@@ -6,11 +6,19 @@
 
 
 {% block fos_user_content %}
-    <!-- Default switch -->
-    <div class="custom-control custom-switch">
-        <input type="checkbox" class="custom-control-input" id="customSwitches">
-        <label class="custom-control-label" for="customSwitches">Toggle this switch element</label>
-    </div>
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+    <form>
+        <input type="checkbox" checked data-toggle="toggle" value="Ligado">
+        <input type="checkbox" checked data-toggle="toggle" data-size="large">
+        <input type="checkbox" checked data-toggle="toggle" data-size="normal">
+        <input type="checkbox" checked data-toggle="toggle" data-size="small" data-on="<i></i> Ligado" data-off="<i'></i> Desligado" data>
+        <input type="checkbox" checked data-toggle="toggle" data-size="mini" >
+
+        <input type="checkbox" checked data-toggle="toggle" data-on="<i class='fa fa-play'></i> Play" data-off="<i class='fa fa-pause'></i> Pause">
+
+
+    </form>
 {% endblock %}
 
 
