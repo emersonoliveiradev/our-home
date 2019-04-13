@@ -41,7 +41,30 @@ class Component
      * @ORM\Column(name="status", type="boolean")
      */
     private $status;
-
+    
+    /**
+     * @var User
+     *
+     * @ORM\ManyToOne(targetEntity="BaseBundle\Entity\User")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+    
+    
+    /**
+     * @return User
+     */
+    public function getUser() {
+        return $this->user;
+    }
+    
+    /**
+     * @param User $user
+     */
+    public function setUser($user) {
+        $this->user = $user;
+    }
+    
 
     /**
      * Get id
@@ -124,5 +147,7 @@ class Component
     {
         return $this->status;
     }
+    
+    
 }
 
