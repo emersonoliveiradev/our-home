@@ -1,13 +1,12 @@
 {% block navbar %}
     <div class="container-nav-bar">
         <div class="nav nav-bar">
-            <span style="font-size:30px;cursor:pointer;" onclick="openNav()">
+            <span style="float: left; font-size:30px;cursor:pointer;" onclick="openNav()">
                 &#9776;
             </span>
             <a href="{{ path('base_homepage') }}" style="font-size:30px; text-decoration:none; color: #FFFFFF;">
-                <span>
-                    OurHome
-                </span>
+                <div style="margin-left: 10px;float: left; background-size: contain; background-image: url('{{ asset('assets/img/logo.png') }}'); width: 110px; height: 35px; ">
+                </div>
             </a>
 
             <div class="dropdown" style="float: right; margin-right: 15px; font-size: 30px">

@@ -21,7 +21,14 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
 </head>
-<body>
+<body style="
+        background: url('{{ asset('assets/img/house2.jpg') }}') no-repeat center center fixed;
+        background-size: 100% 100%;
+        background-repeat: no-repeat">
+
+
+
+
 
 {% if app.request.hasPreviousSession %}
     {% for type, messages in app.session.flashbag.all() %}
@@ -48,13 +55,13 @@
                             <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
                         {% endif %}
                         <div class="container-login-form">
-
                             <form class="form-signin" action="{{ path("fos_user_security_check") }}" method="post">
                                 {% if csrf_token %}
                                     <input type="hidden" name="_csrf_token" value="{{ csrf_token }}"/>
                                 {% endif %}
 
-                                <div style="text-align: center; font-size: 50px">Logo</div>
+                                <div style="margin: auto; background-image: url('{{ asset('assets/img/logo.png') }}'); width: 150px; height: 65px; " >
+                                </div>
 
                                 <label for="username" id="login-input-username-label">{{ 'Usuário'|trans }}</label>
                                 <input type="text" class="login-input-username" name="_username"
