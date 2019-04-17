@@ -1,8 +1,7 @@
 {% extends 'base.html.twig' %}
 
-
 {% block body %}
-    <h1>Criar Componente</h1>
+
     <div class="container-login-form">
         {{ form_start(form, {'method': 'post', 'attr': {'class': 'fos_user_registration_register, form-signin'}}) }}
         {{ form_row(form.title, {'attr': {'class': 'register-input','placeholder': 'Insira seu acesso'|trans, 'label':'Nome de acesso'}}) }}

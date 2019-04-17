@@ -36,9 +36,9 @@ security:
 
 
     access_control:
+        - { path: ^/component/api, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin/, role: ROLE_ADMIN }
         - { path: ^/, role: ROLE_USER }
-        - { path: ^/component/, role: ROLE_USER }
