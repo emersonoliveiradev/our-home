@@ -2,6 +2,7 @@
 
 namespace BaseBundle\Controller;
 
+use AndreaSprega\Bundle\BreadcrumbBundle\Annotation\Breadcrumb;
 use function GuzzleHttp\Promise\all;
 use function GuzzleHttp\Psr7\str;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -17,6 +18,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Component controller.
  * @Route("/component")
+ * @Breadcrumb({{ "label" = "Componentes", "route" = "component_index"}})
  */
 class ComponentController extends Controller
 {
@@ -114,7 +116,7 @@ class ComponentController extends Controller
 
     /**
      * Switch status of Component.
-     * @Route("/api/{id}/switch", name="component_switch")
+     * @Route("/{id}/switch", name="component_switch")
      *
      */
     public function switchAction($id)
@@ -125,6 +127,37 @@ class ComponentController extends Controller
         die($response);
 
         return new Response($response->getBody(), $response->getStatusCode());
+    }
+
+
+    /**
+     * @Route("/{id}/state", name="api_state")
+     */
+    public function apiAction($id, Request $request) {
+        # consultar bd
+        # resgatar pino
+        # enviar na requisição
+        $client = new \GuzzleHttp\Client();
+        $http = $this->getParameter('uri_api_reaspberry');
+        $response = $client->request('GET', "{$http}/{$id}/state");
+
+        if($response->getStatusCode() == 200){
+            die("Foi");
+            $dec = json_decode($response->getBody(), false);
+            $status = $dec->item->status;
+            $device = $dec->item->device;
+            #echo(gettype($dec->User->Nome));
+            echo($status);
+            echo($device);
+        } elseif ($response->getStatusCode() == 400) {
+            die("Por algum motivo ");
+            return $response;
+        }
+
+        #dump($dec->statusCode);
+        #$ab = json_encode($dec->User->Nome);
+        #echo($ab);
+        return new Response(null);
     }
 
     #$client = new \GuzzleHttp\Client();

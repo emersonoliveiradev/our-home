@@ -79,3 +79,7 @@ fos_user:
     registration:
         form:
             type: BaseBundle\Form\RegistrationFormType
+
+
+asprega_breadcrumb:
+    template: breadcrumbs/breadcrumb.html.twig

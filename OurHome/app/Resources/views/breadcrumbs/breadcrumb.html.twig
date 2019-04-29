@@ -1,0 +1,23 @@
+{% if items | length > 0 %}
+    <div class="d-inline-block">
+        <nav aria-label="breadcrumb float-right" style="height: 42px; background-color: rgba(0,0,0,0)" >
+            <ol class="breadcrumb" style="height: 42px; background-color: rgba(0,0,0,0); line-height: 21px;">
+                {% for item in items %}
+                    {% if item.url %}
+                        <li class="breadcrumb-item">
+                            <small>
+                                <a href="{{ item.url }}">
+                                    {{ item.translatedLabel }}
+                                </a>
+                            </small>
+                        </li>
+                    {% else %}
+                        <li class="breadcrumb-item active" aria-current="page">
+                            <small>{{ item.translatedLabel }}</small>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ol>
+        </nav>
+    </div>
+{% endif %}

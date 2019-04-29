@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -30,11 +31,11 @@
     </script>
 
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
 
 </head>
+
 <body>
 {% if app.request.hasPreviousSession %}
     {% for type, messages in app.session.flashbag.all() %}
@@ -45,6 +46,7 @@
         {% endfor %}
     {% endfor %}
 {% endif %}
+
 {% block body %}
     {% for flash_message in app.session.flashbag.get('error') %}
         <div class="alert alert-danger">
@@ -73,9 +75,9 @@
     </div>
 {% endblock %}
 
+
 {% block javascripts %}
 {% endblock %}
 
 </body>
-
 </html>
