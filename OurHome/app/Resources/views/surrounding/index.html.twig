@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Surroundings list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for surrounding in surroundings %}
+            <tr>
+                <td><a href="{{ path('surrounding_show', { 'id': surrounding.id }) }}">{{ surrounding.id }}</a></td>
+                <td>{{ surrounding.title }}</td>
+                <td>{{ surrounding.description }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('surrounding_show', { 'id': surrounding.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('surrounding_edit', { 'id': surrounding.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('surrounding_new') }}">Create a new surrounding</a>
+        </li>
+    </ul>
+{% endblock %}

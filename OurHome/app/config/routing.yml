@@ -1,3 +1,7 @@
+base_surrounding:
+    resource: "@BaseBundle/Controller/SurroundingController.php"
+    type:     annotation
+
 base_component:
     resource: "@BaseBundle/Controller/ComponentController.php"
     type:     annotation
