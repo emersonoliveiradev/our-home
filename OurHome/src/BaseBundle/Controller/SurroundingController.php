@@ -3,9 +3,11 @@
 namespace BaseBundle\Controller;
 
 use BaseBundle\Entity\Surrounding;
+use BaseBundle\Entity\Component;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
+
 
 /**
  * Surrounding controller.
@@ -23,11 +25,14 @@ class SurroundingController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-
         $surroundings = $em->getRepository('BaseBundle:Surrounding')->findAll();
+        $components = $em->getRepository('BaseBundle:Component')->findAll();
+
+        $aux = $em->getRepository('BaseBundle:Component')->find($surroundings);
 
         return $this->render('surrounding/index.html.twig', array(
             'surroundings' => $surroundings,
+            'components' => $components,
         ));
     }
 
