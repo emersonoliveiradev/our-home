@@ -64,7 +64,30 @@ class Component
     public function setUser($user) {
         $this->user = $user;
     }
-    
+
+
+    /**
+     * @var Surrounding
+     *
+     * @ORM\ManyToOne(targetEntity="BaseBundle\Entity\Surrounding")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $surrounding;
+
+
+    /**
+     * @return Surrounding
+     */
+    public function getSurrounding() {
+        return $this->surrounding;
+    }
+
+    /**
+     * @param Surrounding $surrounding
+     */
+    public function setSurrounding($surrounding) {
+        $this->surrounding = $surrounding;
+    }
 
     /**
      * Get id
@@ -147,7 +170,5 @@ class Component
     {
         return $this->status;
     }
-    
-    
 }
 

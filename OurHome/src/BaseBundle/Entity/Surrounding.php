@@ -61,6 +61,15 @@ class Surrounding
     }
 
     /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string) $this->getTitle();
+    }
+
+
+    /**
      * Get title.
      *
      * @return string

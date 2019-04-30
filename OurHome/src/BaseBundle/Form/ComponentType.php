@@ -13,7 +13,12 @@ class ComponentType extends AbstractType {
      * @param array                $options
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
-        $builder->add('title')->add('description')->add('status')->add('user');
+        $builder
+            ->add('title', null, array('label' => 'Nome'))
+            ->add('description',null, array('label' => 'Descrição'))
+            ->add('status',null, array('label' => 'Status'))
+            ->add('user',null, array('label' => 'Usuário'))
+            ->add('surrounding',null, array('label' => 'Ambiente'));
     }
     
     /**
