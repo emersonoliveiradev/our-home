@@ -4,58 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "ebf3b54d13b0cc932c8f0dbcc44e921a",
+    "content-hash": "a510cff352f096f97286def9a1d6931d",
     "packages": [
-        {
-            "name": "asprega/breadcrumb-bundle",
-            "version": "0.2.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/asprega/BreadcrumbBundle.git",
-                "reference": "7c0bcd1eb99212e140da559ea1677f5e84252520"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/asprega/BreadcrumbBundle/zipball/7c0bcd1eb99212e140da559ea1677f5e84252520",
-                "reference": "7c0bcd1eb99212e140da559ea1677f5e84252520",
-                "shasum": ""
-            },
-            "require": {
-                "doctrine/common": "~2.3",
-                "php": ">=5.5.0",
-                "symfony/framework-bundle": "~2.8|~3.0|^4.0",
-                "symfony/property-access": "~2.8|~3.0|^4.0"
-            },
-            "require-dev": {
-                "mockery/mockery": "~0.9",
-                "phpunit/phpunit": "~4.8"
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-4": {
-                    "AndreaSprega\\Bundle\\BreadcrumbBundle\\": ""
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Andrea Sprega",
-                    "email": "andreasprega@gmail.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "A bundle for generating dynamic breadcrumbs in Symfony applications",
-            "keywords": [
-                "breadcrumb",
-                "breadcrumbs",
-                "bundle",
-                "symfony"
-            ],
-            "time": "2018-08-20T22:21:47+00:00"
-        },
         {
             "name": "doctrine/annotations",
             "version": "v1.2.7",
