@@ -25,11 +25,15 @@ class SurroundingController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
+
         $surroundings = $em->getRepository('BaseBundle:Surrounding')->findAll();
         $components = $em->getRepository('BaseBundle:Component')->findAll();
+        $aux = [];
 
-        $aux = $em->getRepository('BaseBundle:Component')->find($surroundings);
+        #$surroundingName = $components->getSurrounding()->getTitle();
+        #echo($surroundingName);
 
+        #$aux = $em->getRepository('BaseBundle:Component')->find($surroundings);
         return $this->render('surrounding/index.html.twig', array(
             'surroundings' => $surroundings,
             'components' => $components,

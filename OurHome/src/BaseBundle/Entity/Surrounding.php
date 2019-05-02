@@ -2,6 +2,8 @@
 
 namespace BaseBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -65,7 +67,8 @@ class Surrounding
      */
     public function __toString()
     {
-        return (string) $this->getTitle();
+        return (string) $this->getId();
+
     }
 
 
@@ -102,4 +105,33 @@ class Surrounding
     {
         return $this->description;
     }
+
+
+
+
+    #Não tenho certeza e o que está abaixo é realmente importante
+
+    /**
+     * @ORM\OneToMany(targetEntity="BaseBundle\Entity\Component", mappedBy="surrounding")
+     */
+    private $components;
+
+    public function __construct()
+    {
+        $this->components = new ArrayCollection();
+    }
+
+    #Rever
+    /**
+     * @return Collection|Component[]
+     */
+    public function getComponents(): Collection {
+        return $this->components;
+    }
+
+
+
+
+
+
 }

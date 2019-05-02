@@ -1,5 +1,8 @@
 <?php
 
+# https://www.doctrine-project.org/projects/doctrine-orm/en/2.6/reference/association-mapping.html
+# Maneira de fazer associação. usar o inverseby
+
 namespace BaseBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
@@ -88,6 +91,7 @@ class Component
     public function setSurrounding($surrounding) {
         $this->surrounding = $surrounding;
     }
+
 
     /**
      * Get id

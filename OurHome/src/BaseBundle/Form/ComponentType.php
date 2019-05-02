@@ -1,5 +1,8 @@
 <?php
 
+# https://symfony.com/doc/3.4/reference/forms/types/entity.html
+# Alterar modo de enviar label entity
+
 namespace BaseBundle\Form;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
