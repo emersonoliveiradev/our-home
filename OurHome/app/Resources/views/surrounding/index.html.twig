@@ -4,53 +4,99 @@
     Ambientes
 {% endblock %}
 
+
 {% block fos_user_content %}
-    <h1>Surroundings list</h1>
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for surrounding in surroundings %}
-            <tr>
-            <th>{{ surrounding.title}}</th>
-            {% for component in components %}
-                {% if surrounding.id == component.surrounding.__toString() %}
-                    <tr>
-                    <td><a href="{{ path('surrounding_show', { 'id': surrounding.id }) }}">{{ surrounding.id }}</a></td>
-                    <td>{{ surrounding.title }}</td>
-                    <td>{{ surrounding.description }}</td>
-                    <td>
-                        <ul>
-                            <li>
-                                <a href="{{ path('surrounding_show', { 'id': surrounding.id }) }}">show</a>
-                            </li>
-                            <li>
-                                <a href="{{ path('surrounding_edit', { 'id': surrounding.id }) }}">edit</a>
-                            </li>
-                        </ul>
-                    </td>
-                    <tr>
-                </tr>
-                {% endif %}
-            {% endfor %}
+    <div class="row" style="font-size: 20px; margin-top: 5px;">
+        <div class="col-xs-1">
+            <i class="fas fa-arrow-circle-left" style="margin-top: 4px; font-size: 30px;"></i>
+        </div>
+        <div class="col-xs-11">
+            {{ asprega_breadcrumb() }}
+        </div>
+
+        <hr style="border: 1px solid purple; border-radius: 5px; width: 80%; margin-bottom: 5px">
+    </div>
+
+    {% for surrounding in surroundings %}
+            <div id={{ surrounding.id }} class="col-xs-12" style="padding: 3%; background-image: linear-gradient(to right, rgba(80, 0, 150,1), rgba(80, 0, 180,1));margin-bottom: 5px">
+                <div class="row" style="height: 100%; align-items: center;">
+                <div class="col-xs-1">
+                    <i class="fas fa-map-marker-alt" style="font-size: 21px; color: #FFFFFF;"></i>
+                </div>
+                <div class="col-xs-9" style="color:#FFFFFF;">
+                    <div class="col-xs-8" style="color:#FFFFFF; margin-left: -15px;">
+                    <span style="font-size: 21px">
+                        {{ surrounding.title }}
+                    </span>
+                    </div>
+                </div>
+                <div class="col-xs-1">
+                    <a href="{{ path('surrounding_edit', { 'id': surrounding.id }) }}">
+                        <i class="fas fa-pencil-alt" style="font-size: 21px; color: #FFFFFF"></i>
+                    </a>
+                </div>
+                </div>
+            </div>
+
+        {% for component in components %}
+            {% if surrounding.id == component.surrounding.__toString() %}
+                <div class="row" style="height: 100%; align-items: center">
+                    <div class="col-xs-12"
+                         style="padding: 3%; background-image: linear-gradient(to right, rgba(80, 0, 150,1), rgba(80, 0, 180,1));">
+                        <div class="col-xs-2">
+                            <i class="fas fa-lightbulb" style="font-size: 21px; color: #FFFFFF"></i>
+                        </div>
+                        <div class="col-xs-6" style="color:#FFFFFF;">
+                    <span style="font-size: 21px">
+                        {{ component.title }}
+                    </span>
+                        </div>
+                        <div class="col-xs-2">
+                            <!--Aqui vai ser definido pelo retorno do get-->
+                            {% if component.status %}
+                                <input type="checkbox" id="{{ component.id }}" checked data-toggle="toggle" data-size="mini" data-onstyle="primary">
+                            {% else %}
+                                <input type="checkbox" id="{{ component.id }}" data-toggle="toggle" data-size="mini">
+                            {% endif %}
+                        </div>
+                        <div class="col-xs-1">
+                            <a href="{{ path('component_edit', { 'id': component.id }) }}">
+                                <i class="fas fa-pencil-alt" style="font-size: 21px; color: #FFFFFF"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <hr style="border: 1px solid purple; border-radius: 5px; width: 100%; margin-bottom: 5px">
+                    <script>
+                        $("#{{ component.id }}").change(function () {
+                            $.ajax({
+                                type: "POST",
+                                crossDomain: true,
+                                header: 'Access-Control-Allow-Origin',
+                                url: "http://127.0.0.1:20000/api/{{ component.id }}/switch",
+                                success: function (msg) {
+                                    //alert(JSON.stringify(msg));
+                                },
+                                error: function (error) {
+                                    alert('Falhou');
+                                    alert(error.status);
+                                },
+                            });
+                        });
+                    </script>
+                </div>
+            {% endif %}
         {% endfor %}
-        </tbody>
-    </table>
+    {% endfor %}
+    </div>
+    <div style="position: fixed; top: 490px; right: 50px;font-size: 45px; z-index: 1; ">
+        <a href="{{ path('surrounding_new') }}"><i class="fas fa-plus-circle"
+                                                   style="color: #0000FF; background-color: #FFFFFF; border-radius: 90px   "></i></a>
+    </div>
 
-    <ul>
-        <li>
-            <a href="{{ path('surrounding_new') }}">Create a new surrounding</a>
-        </li>
-    </ul>
-
-
-
+    <script>
+    </script>
 {% endblock %}
 

@@ -2,6 +2,7 @@
 
 namespace BaseBundle\Controller;
 
+use AndreaSprega\Bundle\BreadcrumbBundle\Annotation\Breadcrumb;
 use BaseBundle\Entity\Surrounding;
 use BaseBundle\Entity\Component;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -13,6 +14,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
  * Surrounding controller.
  *
  * @Route("surrounding")
+ * @Breadcrumb({{ "label" = "Ambientes", "route" = "surrounding_index"}})
  */
 class SurroundingController extends Controller
 {

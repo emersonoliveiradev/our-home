@@ -49,10 +49,9 @@ class Component
      * @var User
      *
      * @ORM\ManyToOne(targetEntity="BaseBundle\Entity\User")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, name="user_id", referencedColumnName="id")
      */
     private $user;
-    
     
     /**
      * @return User

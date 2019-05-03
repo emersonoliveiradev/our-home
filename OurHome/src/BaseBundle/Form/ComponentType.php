@@ -5,11 +5,11 @@
 
 namespace BaseBundle\Form;
 use Doctrine\ORM\EntityRepository;
-use http\Client\Curl\User;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+
 
 
 class ComponentType extends AbstractType {
@@ -20,20 +20,21 @@ class ComponentType extends AbstractType {
      */
     public function buildForm(FormBuilderInterface $builder, array $options) {
 
+        #print_r($options['csrf_token_id']->getId());
+        $currentUser = $options['csrf_token_id'];
+
+
         $builder
             ->add('title', null, array('label' => 'Nome'))
             ->add('description',null, array('label' => 'Descrição'))
             ->add('status',null, array('label' => 'Status'))
 
             ->add('user',EntityType::class,[
-                'label' => 'Nome do usuário',
-                'placeholder' => 'Selecione o usuário',
                 'class' => 'BaseBundle\Entity\User',
-                'choice_label' => 'username',
-                'query_builder' => function (EntityRepository $er) {
+                'query_builder' => function (EntityRepository $er) use ($currentUser) {
                     return $er->createQueryBuilder('u')
                         ->where('u.id = :id')
-                        ->setParameter(':id', 1);
+                        ->setParameter(':id', $currentUser->getId());
                 },
             ])
 
@@ -52,3 +53,16 @@ class ComponentType extends AbstractType {
         $resolver->setDefaults(array('data_class' => 'BaseBundle\Entity\Component'));
     }
 }
+
+/*
+->add('user',EntityType::class,[
+    'label' => 'Nome do usuário',
+    'placeholder' => 'Selecione o usuário',
+    'class' => 'BaseBundle\Entity\User',
+    'choice_label' => 'username',
+    'query_builder' => function (EntityRepository $er) {
+        return $er->createQueryBuilder('u')
+            ->where('u.id = :id')
+            ->setParameter(':id', 1);
+    },
+])

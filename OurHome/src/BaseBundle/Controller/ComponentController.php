@@ -15,6 +15,7 @@ use BaseBundle\Form\ComponentType;
 use Symfony\Component\HttpFoundation\Response;
 
 
+
 /**
  * Component controller.
  * @Route("/component")
@@ -44,12 +45,16 @@ class ComponentController extends Controller
     public function newAction(Request $request)
     {
         $component = new Component();
-        $form = $this->createForm('BaseBundle\Form\ComponentType', $component);
+        #Tem que mudar esse csrf_token_id para currentUser
+
+        $form = $this->createForm('BaseBundle\Form\ComponentType', $component, array('csrf_token_id' => $this->getUser()));
         $form->handleRequest($request);
+
         if ($form->isSubmitted() && $form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $em->persist($component);
             $em->flush();
+            die("Foi");
             return $this->redirectToRoute('component_show', array('id' => $component->getId()));
         }
         return $this->render('component/new.html.twig', array('component' => $component, 'form' => $form->createView(),));
@@ -63,7 +68,7 @@ class ComponentController extends Controller
     public function editAction(Request $request, Component $component)
     {
         $deleteForm = $this->createDeleteForm($component);
-        $editForm = $this->createForm('BaseBundle\Form\ComponentType', $component);
+        $editForm = $this->createForm('BaseBundle\Form\ComponentType', $component, array('csrf_token_id' => $this->getUser()));
         $editForm->handleRequest($request);
         if ($editForm->isSubmitted() && $editForm->isValid()) {
             $em = $this->getDoctrine()->getManager();
