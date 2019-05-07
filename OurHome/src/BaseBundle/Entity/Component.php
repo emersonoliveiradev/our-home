@@ -185,5 +185,14 @@ class Component
     {
         return $this->status;
     }
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string) $this->getTitle();
+
+    }
 }
 

@@ -50,6 +50,14 @@ class Scenery
     }
 
     /**
+     * @return mixed
+     */
+    public function getComponents()
+    {
+        return $this->components;
+    }
+
+    /**
      * Get id.
      *
      * @return int
@@ -106,4 +114,5 @@ class Scenery
     {
         return $this->description;
     }
+
 }
