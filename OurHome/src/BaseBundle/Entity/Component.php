@@ -7,6 +7,7 @@ namespace BaseBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+
 /**
  * Component
  *
@@ -91,6 +92,17 @@ class Component
         $this->surrounding = $surrounding;
     }
 
+    /**
+     * Bidirectional - Many comments are favorited by many users (INVERSE SIDE)
+     *
+     * @ORM\ManyToMany(targetEntity="Scenery", mappedBy="components")
+     */
+    private $sceneries;
+
+
+    public function __construct() {
+        $this->sceneryComponents = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
