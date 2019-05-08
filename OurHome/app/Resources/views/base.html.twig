@@ -75,8 +75,10 @@
                     {% endblock %}
 
                     {% if is_granted('ROLE_USER') %}
+                    <div class="container-body" style="word-wrap: break-word; white-space: nowrap;">
                         {% block content %}
                         {% endblock %}
+                    </div>
                     {% endif %}
 
                 </div>

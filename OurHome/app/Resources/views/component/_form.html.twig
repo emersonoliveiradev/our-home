@@ -1,0 +1,88 @@
+{{ form_start(edit_form, { attr: { novalidate: 'novalidate', class: form_css|default('') } }) }}
+    {% if edit_form.vars.method == "DELETE" %}
+
+    {% else %}
+        <div class="row">
+            <div class="col-xs-12 {% if edit_form.title.vars.errors|length %} has-error {% endif %}"
+                 style="background-color: #FF0000">
+                <div class="form-group">
+                        {{ form_label(edit_form.title) }}
+                        {{ form_widget(edit_form.title) }}
+                        {{ form_errors(edit_form.title) }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 {% if edit_form.description.vars.errors|length %} has-error {% endif %}">
+                <div class="form-group">
+                    <div col-xs-12>
+                    {{ form_label(edit_form.description) }}
+                    </div>
+                    <div col-xs-12>
+                    {{ form_widget(edit_form.description) }}
+                    </div>
+                    <div col-xs-12>
+                    {{ form_errors(edit_form.description) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-8 {% if edit_form.surrounding.vars.errors|length %} has-error {% endif %}">
+                <div class="form-group">
+                    <div col-xs-12>
+                    {{ form_label(edit_form.surrounding) }}
+                    </div>
+                    <div col-xs-12>
+                    {{ form_widget(edit_form.surrounding) }}
+                    </div>
+                    <div col-xs-12>
+                    {{ form_errors(edit_form.surrounding) }}
+                    </div>
+                </div>
+            </div>
+            <div class="col-xs-4 {% if edit_form.status.vars.errors|length %} has-error {% endif %}">
+                <div class="form-group">
+                    <div col-xs-12>
+                    {{ form_label(edit_form.status) }}
+                    </div>
+                    <div col-xs-12>
+                    {{ form_widget(edit_form.status) }}
+                    </div>
+                    <div col-xs-12>
+                    {{ form_errors(edit_form.status) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6 {% if edit_form.user.vars.errors|length %} has-error {% endif %}">
+                <div class="form-group">
+                    {{ form_label(edit_form.user) }}
+                    {{ form_widget(edit_form.user) }}
+                    {{ form_errors(edit_form.user) }}
+                </div>
+            </div>
+        </div>
+
+
+
+
+    {% endif %}
+
+<div class="row">
+    <div class="form-actions">
+        <button type="submit" class="btn {{ button_css|default('btn-success btn-fw ') }} waves-effect">
+            {{ button_label|default('Salvar') }}
+        </button>
+    </div>
+    <div class="form-actions">
+        <a href="{{ path('component_index') }}">
+            <button type="submit" class="btn {{ button_css|default('btn-warning btn-fw ') }} waves-effect">
+                Back to the list
+            </button>
+        </a>
+    </div>
+</div>
+
+{{ form_end(edit_form) }}

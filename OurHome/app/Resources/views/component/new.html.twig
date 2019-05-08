@@ -1,6 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
+{% block content %}
+    <div class="col-xs-12">
+        {{ include('component/breadcrumb.html.twig') }}
+    </div>
 
     <div class="container-login-form">
         {{ form_start(form, {'method': 'post', 'attr': {'class': 'fos_user_registration_register, form-signin'}}) }}

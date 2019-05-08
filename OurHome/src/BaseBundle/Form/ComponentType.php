@@ -6,6 +6,9 @@
 namespace BaseBundle\Form;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -23,11 +26,10 @@ class ComponentType extends AbstractType {
         #print_r($options['csrf_token_id']->getId());
         $currentUser = $options['csrf_token_id'];
 
-
         $builder
-            ->add('title', null, array('label' => 'Nome'))
-            ->add('description',null, array('label' => 'Descrição'))
-            ->add('status',null, array('label' => 'Status'))
+            ->add('title', TextType::class, array('label' => 'Título'))
+            ->add('description',TextareaType::class, array('label' => 'Descrição'))
+            ->add('status',CheckboxType::class, array('label' => 'Status'))
 
             ->add('user',EntityType::class,[
                 'class' => 'BaseBundle\Entity\User',

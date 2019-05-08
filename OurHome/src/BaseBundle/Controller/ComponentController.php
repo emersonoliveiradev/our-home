@@ -41,6 +41,7 @@ class ComponentController extends Controller
      * Creates a new Component entity.
      * @Route("/new", name="component_new")
      * @Method({"GET", "POST"})
+     * @Breadcrumb({{ "label" = "Adicionar"}})
      */
     public function newAction(Request $request)
     {
@@ -64,6 +65,7 @@ class ComponentController extends Controller
      * Displays a form to edit an existing Component entity.
      * @Route("/{id}/edit", name="component_edit")
      * @Method({"GET", "POST"})
+     * @Breadcrumb({{ "label" = "Editar"}})
      */
     public function editAction(Request $request, Component $component)
     {
