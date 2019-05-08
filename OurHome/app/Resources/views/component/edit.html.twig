@@ -6,29 +6,9 @@
 
 
 {% block content %}
-<div class="col-xs-12">
-    {{
-        include(
-            'component/breadcrumb.html.twig',
-            {
-                form: edit_form,
-                form_css: 'pull-right',
-                button_label: 'Excluir Item',
-                button_css: 'btn-rounded btn-danger btn-stroke btn-xs',
-                include_back_to_home_link: false
-            },
-            with_context = false
-        )
-    }}
+    <div class="col-xs-12">
+        {{ include('component/breadcrumb.html.twig') }}
 
-
-    {{ include('component/_form.html.twig') }}
-
-</div>
-
-
-
-
-
-
+        {{ include('component/_form.html.twig') }}
+    </div>
 {% endblock %}

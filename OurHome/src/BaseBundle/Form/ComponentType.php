@@ -31,14 +31,7 @@ class ComponentType extends AbstractType {
             ->add('description',TextareaType::class, array('label' => 'Descrição'))
             ->add('status',CheckboxType::class, array('label' => 'Status'))
 
-            ->add('user',EntityType::class,[
-                'class' => 'BaseBundle\Entity\User',
-                'query_builder' => function (EntityRepository $er) use ($currentUser) {
-                    return $er->createQueryBuilder('u')
-                        ->where('u.id = :id')
-                        ->setParameter(':id', $currentUser->getId());
-                },
-            ])
+
 
             ->add('surrounding',EntityType::class,[
                 'label' => 'Ambiente',
