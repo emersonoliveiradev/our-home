@@ -9,6 +9,6 @@
     <div class="col-xs-12">
         {{ include('component/breadcrumb.html.twig') }}
 
-        {{ include('component/_form.html.twig') }}
+        {{ include('component/_form.html.twig', {form: edit_form}) }}
     </div>
 {% endblock %}

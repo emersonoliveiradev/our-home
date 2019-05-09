@@ -27,12 +27,9 @@ class ComponentType extends AbstractType {
         $currentUser = $options['csrf_token_id'];
 
         $builder
-            ->add('title', TextType::class, array('label' => 'Título'))
+            ->add('title', TextType::class, array('label' => 'Título', 'attr' => array('autofocus' => true )))
             ->add('description',TextareaType::class, array('label' => 'Descrição'))
             ->add('status',CheckboxType::class, array('label' => 'Status'))
-
-
-
             ->add('surrounding',EntityType::class,[
                 'label' => 'Ambiente',
                 'placeholder' => 'Selecione um ambiente',

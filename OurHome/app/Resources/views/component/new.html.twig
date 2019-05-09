@@ -1,27 +1,15 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}
+    Adicionar componente
+{% endblock %}
+
+
 {% block content %}
     <div class="col-xs-12">
         {{ include('component/breadcrumb.html.twig') }}
-    </div>
 
-    <div class="container-login-form">
-        {{ form_start(form, {'method': 'post', 'attr': {'class': 'fos_user_registration_register, form-signin'}}) }}
-        {{ form_row(form.title, {'attr': {'class': 'register-input','placeholder': 'Insira seu acesso'|trans, 'label':'Nome de acesso'}}) }}
-        {{ form_row(form.description, {'attr': {'class': 'register-input','placeholder': 'Insira seu e-mail'|trans}}) }}
-        {{ form_row(form.status) }}
-        <!--Ver como enviar o id do usuário atual no componenttype-->
-        {{ form_row(form.user, {'attr': {'class': 'register-input','placeholder': 'Insira seu e-mail'|trans, 'class': 'hide'}})}}
-        {{ form_row(form.surrounding, {'attr': {'class': 'register-input','placeholder': 'Insira seu e-mail'|trans}}) }}
-        {{ form_errors(form) }}
-        <input type="submit" class="btn btn-lg btn-primary register-input-button" name="_submit"
-               value="{{ 'Criar'|trans }}"/>
-        <a href="{{ path('component_index') }}">
-            <button class="btn btn-lg btn-primary register-input-button" value="{{ 'Voltar'|trans }}">
-                Voltar
-            </button>
-        </a>
-
-        {{ form_end(form) }}
+        {{ include('component/_form.html.twig', {form: form}) }}
     </div>
 {% endblock %}
+

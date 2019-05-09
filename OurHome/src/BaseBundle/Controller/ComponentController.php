@@ -19,7 +19,7 @@ use Symfony\Component\HttpFoundation\Response;
 /**
  * Component controller.
  * @Route("/component")
- * @Breadcrumb({{ "label" = "Componentes", "route" = "component_index"}})
+ * @Breadcrumb({{ "label" = "Início", "route" = "default_index"}})
  */
 class ComponentController extends Controller
 {
@@ -28,6 +28,7 @@ class ComponentController extends Controller
      * Lists all Component entities.
      * @Route("/", name="component_index")
      * @Method("GET")
+     * @Breadcrumb({{ "label" = "Componentes"}})
      */
     public function indexAction()
     {
@@ -41,7 +42,7 @@ class ComponentController extends Controller
      * Creates a new Component entity.
      * @Route("/new", name="component_new")
      * @Method({"GET", "POST"})
-     * @Breadcrumb({{ "label" = "Adicionar"}})
+     * @Breadcrumb({{ "label" = "Componentes", "route" = "component_index"}, { "label" = "Adicionar"}})
      */
     public function newAction(Request $request)
     {
@@ -50,12 +51,11 @@ class ComponentController extends Controller
 
         $form = $this->createForm('BaseBundle\Form\ComponentType', $component, array('csrf_token_id' => $this->getUser()));
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
+            $form->getData()->setUser($this->getUser());
             $em = $this->getDoctrine()->getManager();
             $em->persist($component);
             $em->flush();
-            die("Foi");
             return $this->redirectToRoute('component_show', array('id' => $component->getId()));
         }
         return $this->render('component/new.html.twig', array('component' => $component, 'form' => $form->createView(),));
@@ -65,7 +65,7 @@ class ComponentController extends Controller
      * Displays a form to edit an existing Component entity.
      * @Route("/{id}/edit", name="component_edit")
      * @Method({"GET", "POST"})
-     * @Breadcrumb({{ "label" = "Editar"}})
+     * @Breadcrumb({{ "label" = "Componentes", "route" = "component_index"}, { "label" = "Editar"}})
      */
     public function editAction(Request $request, Component $component)
     {
@@ -181,7 +181,6 @@ class ComponentController extends Controller
      */
     public function showAction(Component $component)
     {
-        die("adasdas");
         $deleteForm = $this->createDeleteForm($component);
         return $this->render('component/show.html.twig', array('component' => $component, 'delete_form' => $deleteForm->createView(),));
     }

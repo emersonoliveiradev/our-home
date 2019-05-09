@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Session\Session;
 class DefaultController extends Controller {
 
     /**
-     * @Route("/index")
+     * @Route("/index", name="default_index")
      * @Method("GET")
      */
     public function indexAction() {

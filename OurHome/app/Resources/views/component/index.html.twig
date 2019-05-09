@@ -7,6 +7,7 @@
 
 {% block content %}
     <div class="col-xs-12">
+
         {{ include('component/breadcrumb.html.twig') }}
 
         {% for component in components %}
@@ -22,7 +23,6 @@
                     </span>
                 </div>
                 <div class="col-xs-2">
-                    <!--Aqui vai ser definido pelo retorno do get-->
                     {% if component.status %}
                         <input type="checkbox" id="{{ component.id }}" checked data-toggle="toggle" data-size="mini" data-onstyle="primary">
                     {% else %}
@@ -31,7 +31,7 @@
                 </div>
                 <div class="col-xs-1">
                     <a href="{{ path('component_edit', { 'id': component.id }) }}">
-                        <i class="fas fa-pencil-alt" style="font-size: 21px; color: #FFFFFF"></i>
+                        <i class="fas fa-pencil-alt" style="font-size: 21px; color: #FFFFFF" title="Ver/Editar"></i>
                     </a>
                 </div>
             </div>
