@@ -1,8 +1,23 @@
+<div style="background-image: linear-gradient(to left, rgba(70, 0, 200,.6), rgba(80, 0, 200,.9)); color: #FFFFFF; padding: 10px; border-radius: 10px;">
+    <div class="row">
+        <div class="col-xs-8 col-xs-offset-8" {% if form.description.vars.errors|length %} has-error {% endif %}">
+        {% if delete_form is defined %}
+            {{ form_start(delete_form) }}
+            <div class="form-actions" style="float: left; margin-left: 5px">
+                <button type="submit" class="btn btn-danger waves-effect" value="Delete">
+                    {{ button_label|default('Excluir') }}
+                </button>
+            </div>
+            {{ form_end(delete_form) }}
+        {% else %}
+        {%  endif %}
+    </div>
+</div>
+
 {{ form_start(form, { attr: { novalidate: 'novalidate', class: form_css|default('') } }) }}
     {% if form.vars.method == "DELETE" %}
-
+        <!-- Padrão do projeto erp - Ignorar por enquanto-->
     {% else %}
-    <div style="background-image: linear-gradient(to left, rgba(70, 0, 200,.6), rgba(80, 0, 200,.9)); color: #FFFFFF; padding: 10px; border-radius: 10px;">
         <div class="row" style="margin-top: 10px">
             <div class="col-xs-12 {% if form.title.vars.errors|length %} has-error {% endif %}">
                 <div class="form-group">
@@ -44,7 +59,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-offset-6" {% if form.description.vars.errors|length %} has-error {% endif %}">
+            <div class="col-xs-6 col-xs-offset-6" {% if form.description.vars.errors|length %} has-error {% endif %}">
                 <div class="form-actions" style="float: left">
                     <a href="{{ path('component_index') }}">
                         <span class="btn btn-warning waves-effect">

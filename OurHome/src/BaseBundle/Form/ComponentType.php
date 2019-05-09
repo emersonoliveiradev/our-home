@@ -29,7 +29,7 @@ class ComponentType extends AbstractType {
         $builder
             ->add('title', TextType::class, array('label' => 'Título', 'attr' => array('autofocus' => true )))
             ->add('description',TextareaType::class, array('label' => 'Descrição'))
-            ->add('status',CheckboxType::class, array('label' => 'Status'))
+            ->add('status',CheckboxType::class, array('label' => 'Status', 'attr' => array('s' => '50px' )))
             ->add('surrounding',EntityType::class,[
                 'label' => 'Ambiente',
                 'placeholder' => 'Selecione um ambiente',

@@ -56,7 +56,7 @@ class ComponentController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($component);
             $em->flush();
-            return $this->redirectToRoute('component_show', array('id' => $component->getId()));
+            return $this->redirectToRoute('component_index', array('component' => $component));
         }
         return $this->render('component/new.html.twig', array('component' => $component, 'form' => $form->createView(),));
     }
