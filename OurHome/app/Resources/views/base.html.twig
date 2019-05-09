@@ -1,11 +1,12 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html>
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{% block title %}Boas vindas!{% endblock %}</title>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Welcome!{% endblock %}</title>
     {% block stylesheets %}
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
               integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
               crossorigin="anonymous">
@@ -15,69 +16,78 @@
         <link href="{{ asset('assets/font/fontawesome-free/css/brands.css') }}" rel="stylesheet">
         <link href="{{ asset('assets/font/fontawesome-free/css/solid.css') }}" rel="stylesheet">
 
-        <!--Switch toogle-->
+        <script>
+            function closeNav() {
+                document.getElementById("mySidenav").style.width = "0";
+                document.getElementById("main").style.marginLeft = "0";
+            }
+
+            function openNav() {
+                document.getElementById("mySidenav").style.width = "250px";
+                document.getElementById("main").style.marginLeft = "250px";
+            }
+        </script>
+
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
+
+        <!--  -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+        <!--Toogles liga desliga-->
+        <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+        <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
     {% endblock %}
 
-    <script>
-    function closeNav() {
-      document.getElementById("mySidenav").style.width = "0";
-      document.getElementById("main").style.marginLeft= "0";
-    }
-
-    function openNav() {
-      document.getElementById("mySidenav").style.width = "250px";
-      document.getElementById("main").style.marginLeft = "250px";
-    }
-    </script>
-
-    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
 </head>
 
 <body>
-{% if app.request.hasPreviousSession %}
-    {% for type, messages in app.session.flashbag.all() %}
-        {% for message in messages %}
-            <div class="flash-{{ type }}">
-                {{ message }}
-            </div>
-        {% endfor %}
-    {% endfor %}
-{% endif %}
-
 {% block body %}
+    {% if app.request.hasPreviousSession %}
+        {% for type, messages in app.session.flashbag.all() %}
+            {% for message in messages %}
+                <div class="flash-{{ type }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endfor %}
+    {% endif %}
+
     {% for flash_message in app.session.flashbag.get('error') %}
         <div class="alert alert-danger">
             {{ flash_message }}
         </div>
+
     {% endfor %}
+
     <div>
         <div class="row">
             <div class="col-xs-12">
                 <div id="main">
 
-                {% block sidebar %}
-                    {{ include('default/sidebar.html.twig') }}
-                {% endblock %}
+                    {% block sidebar %}
+                        {{ include('default/sidebar.html.twig') }}
+                    {% endblock %}
 
-                {% block navbar %}
-                    {{ include('default/navbar.html.twig') }}
-                {% endblock %}
+                    {% block navbar %}
+                        {{ include('default/navbar.html.twig') }}
+                    {% endblock %}
 
-                {% block fos_user_content %}
+                    {% if is_granted('ROLE_USER') %}
+                    <div class="container-body" style="word-wrap: break-word; white-space: nowrap">
+                        {% block content %}
+                        {% endblock %}
+                    </div>
+                    {% endif %}
 
-                {% endblock %}
                 </div>
             </div>
         </div>
     </div>
 {% endblock %}
-
-
-{% block javascripts %}
-{% endblock %}
+{% block javascripts %}{% endblock %}
 
 </body>
 </html>

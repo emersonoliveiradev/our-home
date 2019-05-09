@@ -1,8 +1,12 @@
 <?php
 
+# https://www.doctrine-project.org/projects/doctrine-orm/en/2.6/reference/association-mapping.html
+# Maneira de fazer associação. usar o inverseby
+
 namespace BaseBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+
 
 /**
  * Component
@@ -46,10 +50,9 @@ class Component
      * @var User
      *
      * @ORM\ManyToOne(targetEntity="BaseBundle\Entity\User")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\JoinColumn(nullable=false, name="user_id", referencedColumnName="id")
      */
     private $user;
-    
     
     /**
      * @return User
@@ -64,7 +67,42 @@ class Component
     public function setUser($user) {
         $this->user = $user;
     }
-    
+
+
+    /**
+     * @var Surrounding
+     *
+     * @ORM\ManyToOne(targetEntity="BaseBundle\Entity\Surrounding")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $surrounding;
+
+
+    /**
+     * @return Surrounding
+     */
+    public function getSurrounding() {
+        return $this->surrounding;
+    }
+
+    /**
+     * @param Surrounding $surrounding
+     */
+    public function setSurrounding($surrounding) {
+        $this->surrounding = $surrounding;
+    }
+
+    /**
+     * Bidirectional - Many comments are favorited by many users (INVERSE SIDE)
+     *
+     * @ORM\ManyToMany(targetEntity="Scenery", mappedBy="components")
+     */
+    private $sceneries;
+
+
+    public function __construct() {
+        $this->sceneryComponents = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
     /**
      * Get id
@@ -147,7 +185,14 @@ class Component
     {
         return $this->status;
     }
-    
-    
+
+    /**
+     * @return string
+     */
+    public function __toString()
+    {
+        return (string) $this->getTitle();
+
+    }
 }
 

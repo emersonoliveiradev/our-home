@@ -1,0 +1,66 @@
+{{ form_start(form, { attr: { novalidate: 'novalidate', class: form_css|default('') } }) }}
+    {% if form.vars.method == "DELETE" %}
+
+    {% else %}
+    <div style="background-image: linear-gradient(to left, rgba(70, 0, 200,.6), rgba(80, 0, 200,.9)); color: #FFFFFF; padding: 10px; border-radius: 10px;">
+        <div class="row" style="margin-top: 10px">
+            <div class="col-xs-12 {% if form.title.vars.errors|length %} has-error {% endif %}">
+                <div class="form-group">
+                        {{ form_label(form.title) }}
+                        {{ form_widget(form.title) }}
+                        {{ form_errors(form.title) }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 {% if form.description.vars.errors|length %} has-error {% endif %}">
+                <div class="form-group">
+                    {{ form_label(form.description) }}
+                    {{ form_widget(form.description) }}
+                    {{ form_errors(form.description) }}
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-12 {% if form.surrounding.vars.errors|length %} has-error {% endif %}">
+                <div class="form-group">
+                    {{ form_label(form.surrounding) }}
+                    {{ form_widget(form.surrounding) }}
+                    {{ form_errors(form.surrounding) }}
+                </div>
+            </div>
+            <div class="col-xs-4 {% if form.status.vars.errors|length %} has-error {% endif %}">
+                <div class="form-group">
+                    <div col-xs-12>
+                    {{ form_label(form.status) }}
+                    </div>
+                    <div col-xs-12>
+                    {{ form_widget(form.status) }}
+                    </div>
+                    <div col-xs-12>
+                    {{ form_errors(form.status) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-offset-6" {% if form.description.vars.errors|length %} has-error {% endif %}">
+                <div class="form-actions" style="float: left">
+                    <a href="{{ path('component_index') }}">
+                        <span class="btn btn-warning waves-effect">
+                            Voltar
+                        </span>
+                    </a>
+                </div>
+                <div class="form-actions" style="float: left; margin-left: 5px">
+                    <button type="submit" class="btn btn-success waves-effect">
+                        {{ button_label|default('Salvar') }}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+
+{{ form_end(form) }}
