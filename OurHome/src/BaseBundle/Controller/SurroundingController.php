@@ -28,8 +28,9 @@ class SurroundingController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $surroundings = $em->getRepository('BaseBundle:Surrounding')->findAll();
-        $components = $em->getRepository('BaseBundle:Component')->findAll();
+        $surroundings = $em->getRepository('BaseBundle:Surrounding')->findBy(array('user'=>$this->getUser()));
+        $components = $em->getRepository('BaseBundle:Component')->findBy(array('user'=>$this->getUser()));
+
         $aux = [];
 
         #$surroundingName = $components->getSurrounding()->getTitle();
@@ -70,6 +71,30 @@ class SurroundingController extends Controller
     }
 
     /**
+     * Displays a form to edit an existing surrounding entity.
+     *
+     * @Route("/{id}/edit", name="surrounding_edit")
+     * @Method({"GET", "POST"})
+     */
+    public function editAction(Request $request, Surrounding $surrounding)
+    {
+        $deleteForm = $this->createDeleteForm($surrounding);
+        $editForm = $this->createForm('BaseBundle\Form\SurroundingType', $surrounding, array('csrf_token_id' => $this->getUser()));
+        $editForm->handleRequest($request);
+        if ($editForm->isSubmitted() && $editForm->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+            return $this->redirectToRoute('surrounding_edit', array('id' => $surrounding->getId()));
+        }
+
+        return $this->render('surrounding/edit.html.twig', array(
+            'surrounding' => $surrounding,
+            'edit_form' => $editForm->createView(),
+            'delete_form' => $deleteForm->createView(),
+        ));
+    }
+
+
+    /**
      * Finds and displays a surrounding entity.
      *
      * @Route("/{id}", name="surrounding_show")
@@ -85,30 +110,7 @@ class SurroundingController extends Controller
         ));
     }
 
-    /**
-     * Displays a form to edit an existing surrounding entity.
-     *
-     * @Route("/{id}/edit", name="surrounding_edit")
-     * @Method({"GET", "POST"})
-     */
-    public function editAction(Request $request, Surrounding $surrounding)
-    {
-        $deleteForm = $this->createDeleteForm($surrounding);
-        $editForm = $this->createForm('BaseBundle\Form\SurroundingType', $surrounding);
-        $editForm->handleRequest($request);
 
-        if ($editForm->isSubmitted() && $editForm->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
-
-            return $this->redirectToRoute('surrounding_edit', array('id' => $surrounding->getId()));
-        }
-
-        return $this->render('surrounding/edit.html.twig', array(
-            'surrounding' => $surrounding,
-            'edit_form' => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
-    }
 
     /**
      * Deletes a surrounding entity.

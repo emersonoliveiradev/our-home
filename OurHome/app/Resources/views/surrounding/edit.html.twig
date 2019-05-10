@@ -1,21 +1,17 @@
 {% extends 'base.html.twig' %}
 
-{% block body %}
-    <h1>Surrounding edit</h1>
-
-    {{ form_start(edit_form) }}
-        {{ form_widget(edit_form) }}
-        <input type="submit" value="Edit" />
-    {{ form_end(edit_form) }}
-
-    <ul>
-        <li>
-            <a href="{{ path('surrounding_index') }}">Back to the list</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+{% block title %}
+    Editar ambiente
 {% endblock %}
+
+{% block content %}
+    <div class="col-xs-12">
+
+        {{ include('surrounding/breadcrumb.html.twig') }}
+
+        {{ include('surrounding/_form.html.twig', {form: edit_form})}}
+
+    </div>
+{% endblock %}
+
+

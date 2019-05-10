@@ -2,6 +2,7 @@
 
 namespace BaseBundle\Controller;
 
+use AndreaSprega\Bundle\BreadcrumbBundle\Annotation\Breadcrumb;
 use BaseBundle\Entity\Scenery;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
@@ -11,6 +12,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component
  * Scenery controller.
  *
  * @Route("scenery")
+ * @Breadcrumb({{ "label" = "Início", "route" = "default_index"}})
  */
 class SceneryController extends Controller
 {
@@ -19,6 +21,7 @@ class SceneryController extends Controller
      *
      * @Route("/", name="scenery_index")
      * @Method("GET")
+     * @Breadcrumb({{ "label" = "Cenários", "route" = "scenery_index"}})
      */
     public function indexAction()
     {
@@ -36,6 +39,7 @@ class SceneryController extends Controller
      *
      * @Route("/new", name="scenery_new")
      * @Method({"GET", "POST"})
+     * @Breadcrumb({{ "label" = "Cenários", "route" = "scenery_index"}, { "label" = "Adicionar", "route" = "scenery_new"}})
      */
     public function newAction(Request $request)
     {

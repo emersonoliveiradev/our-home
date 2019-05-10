@@ -37,6 +37,28 @@ class Surrounding
      */
     private $description;
 
+    /**
+     * @var User
+     *
+     * @ORM\ManyToOne(targetEntity="BaseBundle\Entity\User")
+     * @ORM\JoinColumn(nullable=false, name="user_id", referencedColumnName="id")
+     */
+    private $user;
+
+    /**
+     * @return User
+     */
+    public function getUser() {
+        return $this->user;
+    }
+
+    /**
+     * @param User $user
+     */
+    public function setUser($user) {
+        $this->user = $user;
+    }
+
 
     /**
      * Get id.

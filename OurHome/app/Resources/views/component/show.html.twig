@@ -1,1 +1,40 @@
-{{ path('component_index') }}"
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Component</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ component.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ component.title }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ component.description }}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{% if component.status %}Yes{% else %}No{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('component_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('component_edit', { 'id': component.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

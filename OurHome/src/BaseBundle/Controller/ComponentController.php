@@ -15,7 +15,6 @@ use BaseBundle\Form\ComponentType;
 use Symfony\Component\HttpFoundation\Response;
 
 
-
 /**
  * Component controller.
  * @Route("/component")
@@ -33,7 +32,7 @@ class ComponentController extends Controller
     public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
-        $components = $em->getRepository('BaseBundle:Component')->findAll();
+        $components = $em->getRepository('BaseBundle:Component')->findBy(array('user'=>$this->getUser()));
         return $this->render('component/index.html.twig', array('components' => $components,));
     }
 
