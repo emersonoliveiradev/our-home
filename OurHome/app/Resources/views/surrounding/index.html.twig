@@ -32,8 +32,13 @@
         </div>
     {% for component in components %}
         {% if surrounding.id == component.surrounding.__toString() %}
-            <div class="row row{{ surrounding.id }}" style="height: 100%; ">
-                <div class="col-xs-12" style="padding: 3%; background-image: linear-gradient(to right, rgba(80, 0, 150,1), rgba(80, 0, 180,1));">
+
+
+            <div class="col-xs-12 row{{ surrounding.id }}" style="padding: 3%; background-image: linear-gradient(to right, rgba(80, 0, 150,1), rgba(80, 0, 180,1)); margin-bottom: 5px" onclick="row({{ surrounding.id }})">
+
+
+
+                <div class="row" style="height: 100%; align-items: center;">
                     <div class="col-xs-2">
                         <i class="fas fa-lightbulb" style="font-size: 21px; color: #FFFFFF"></i>
                     </div>
@@ -56,7 +61,7 @@
                         </a>
                     </div>
                 </div>
-                <hr style="border: 1px solid purple; border-radius: 5px; width: 100%; margin-bottom: 5px">
+
                 <script>
                     $("#{{ component.id }}").change(function () {
                         $.ajax({
@@ -74,7 +79,6 @@
                         });
                     });
                 </script>
-
             </div>
             {% endif %}
         {% endfor %}
